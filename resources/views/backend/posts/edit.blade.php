@@ -53,7 +53,7 @@
 						<div class="content cat-content">
 							<h4>Category  <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>	
 							@foreach ($categories as $cat)
-							<p><label for="{{$cat->cid}}"><input type="checkbox" name="category_id[]" value="{{$cat->cid}}">{{$cat->title}}</label></p>
+							<p><label for="{{$cat->cid}}"><input type="checkbox" name="category_id[]" value="{{$cat->cid}}" @if(in_array($cat->cid,$postCat)) checked @endif>{{$cat->title}}</label></p>
 							@endforeach
 						</div>
 						<div class="content featured-image">

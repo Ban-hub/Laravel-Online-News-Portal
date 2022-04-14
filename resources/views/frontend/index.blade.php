@@ -1,35 +1,40 @@
 @extends('frontend.master')
 @section('content')
 <div class="wrapper">
+	@if(count($featured)>0)
 	<div class="row">
+		@foreach($featured as $key=>$f)
+		@if($key == 0)
 		<div class="col-md-6">
-    		<a href="#"><img src="{{url('public/images/fireman-100722_1280-800x445.jpg')}}" width="100%" /></a>
-            <span class="caption">Lorem ipsum dolor sit amet</span>
+    		<a href="{{url('article')}}/{{$f->slug}}"><img src="{{url('public/posts')}}/{{$f->image}}" width="100%" /></a>
+            <span class="caption">{{$f->title}}</span>
     	</div>
+		@endif
+		@endforeach
     	<div class="col-md-6">
     		<div class="row">
+				@foreach($featured as $key=>$f)
+				@if($key > 0 && $key <= 3)
         		<div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/bride-301814_1280-392x272.jpg')}}" width="100%" height="162" /></a>
-		            <span class="caption">Lorem ipsum dolor sit amet</span>
+        	    	<a href="{{url('article')}}/{{$f->slug}}"><img src="{{url('public/posts')}}/{{$f->image}}" width="100%" /></a>
+            		<span class="caption">{{$f->title}}</span>
         	    </div>
-        	    <div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/sea-418742_1920-392x272.jpg')}}" width="100%" height="162" /></a>
-		            <span class="caption">Lorem ipsum dolor sit amet</span>
-        	    </div>
+				@endif
+				@endforeach
         	</div>
         	<div class="row" style="margin-top:30px;">
+				@foreach($featured as $key=>$f)
+				@if($key > 3 && $key < 6)
         		<div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/kayaking-569282_1280-392x272.jpg')}}" width="100%" height="162" /></a>
-		            <span class="caption">Lorem ipsum dolor sit amet</span>
+        	    	<a href="{{url('article')}}/{{$f->slug}}"><img src="{{url('public/posts')}}/{{$f->image}}" width="100%" /></a>
+            		<span class="caption">{{$f->title}}</span>
         	    </div>
-        	    <div class="col-md-6">
-        	    	<a href="#"><img src="{{url('public/images/clouds-sky-stadium-4516-392x272.jpg')}}" width="100%" height="162" /></a>
-                    <span class="caption">Lorem ipsum dolor sit amet</span>
-        	    </div>
+				@endif
+				@endforeach
         	</div>        
     	</div>
 	</div>
-    
+    @endif
     <div class="row" style="margin-top:30px;">
     	<div class="col-md-8">
         <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px;">

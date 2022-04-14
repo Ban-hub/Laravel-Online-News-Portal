@@ -76,12 +76,15 @@ class adminController extends Controller
             $post->category_id = $post_cat;
             $post_categories = [];
         }
-        return view('backend.posts.all-posts',['posts'=>$posts]);
+        $published = DB::table('posts')->where('status','publish')->count();
+        $all_posts = DB::table('posts')->count();
+        return view('backend.posts.all-posts',['posts'=>$posts,'published'=>$published,'all_posts'=>$all_posts]);
     }
 
     public function edit_post($id){
         $categories = DB::table('categories')->get();
         $data = DB::table('posts')->where('pid',$id)->first();
-        return view('backend.posts.edit',['data'=>$data, 'categories'=>$categories]);
+        $postCat = explode(',',$data->category_id);
+        return view('backend.posts.edit',['data'=>$data, 'categories'=>$categories, 'postCat'=>$postCat]);
     }
 }
