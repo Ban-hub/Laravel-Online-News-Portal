@@ -35,5 +35,5 @@ Route::post('update-settings/{id}', [crudController::class, 'update_data']);
 Route::get('add-post', [adminController::class, 'add_post']);
 Route::post('make-post', [crudController::class, 'insert_data']);
 Route::get('all-posts', [adminController::class, 'all_posts']);
-
+Route::get('edit-post/{id}',  [adminController::class, 'edit_post']);
 

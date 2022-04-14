@@ -13,10 +13,12 @@ class adminController extends Controller
     public function index(){
         return view ('backend.index');
     }
+
     public function view_category(){
         $data = DB::table('categories')->get();
         return view ('backend.categories.category', ['data'=>$data]);
     }
+
     public function edit_category($id){
         $singleData = DB::table('categories')->where('cid',$id)->first();
         if($singleData == NULL){
@@ -25,6 +27,7 @@ class adminController extends Controller
         $data = DB::table('categories')->get();
         return view('backend.categories.edit-category', ['data'=>$data, 'singleData'=>$singleData]);
     }
+
     public function multiple_delete(){
         $data =  Req::except('_token');
         if($data['bulk-action']==0){
@@ -44,6 +47,7 @@ class adminController extends Controller
         session::flash('message','Data deleted successfully');
         return redirect()->back();
     }
+
     public function settings(){
         $data = DB::table('settings')->first();
         if($data){
@@ -54,13 +58,30 @@ class adminController extends Controller
         // exit();
         return view('backend.settings', ['data' => $data]);
     }
+
     public function add_post(){
         $categories = DB::table('categories')->get();
         return view('backend.posts.add-post',['categories'=>$categories]);
     }
-    public function all_posts(){
-        $posts = DB::table('posts')->paginate(20);
-        return view('backend.posts.all-posts',['posts'=>$posts]);
 
+    public function all_posts(){
+        $posts = DB::table('posts')->paginate(8);
+        foreach($posts as $post){
+            $categories = explode(',', $post->category_id);
+            foreach ($categories as $cat){
+                $post_cat = DB::table('categories')->where('cid',$cat)->value('title');
+                $post_categories[] = $post_cat;
+                $post_cat = implode(', ',$post_categories);
+            }
+            $post->category_id = $post_cat;
+            $post_categories = [];
+        }
+        return view('backend.posts.all-posts',['posts'=>$posts]);
+    }
+
+    public function edit_post($id){
+        $categories = DB::table('categories')->get();
+        $data = DB::table('posts')->where('pid',$id)->first();
+        return view('backend.posts.edit',['data'=>$data, 'categories'=>$categories]);
     }
 }

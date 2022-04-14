@@ -27,7 +27,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{url('all-post')}}"><i class="fa fa-eye"></i>All Posts</a></li>
+              <li><a href="{{url('all-posts')}}"><i class="fa fa-eye"></i>All Posts</a></li>
               <li><a href="{{url('add-post')}}"><i class="fa fa-plus-circle"></i>Add Posts</a></li>
               <li><a href="{{url('view-category')}}"><i class="fa fa-plus-circle"></i>Categories</a></li>
             </ul>
