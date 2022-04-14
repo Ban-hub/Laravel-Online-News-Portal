@@ -16,8 +16,6 @@
 			@endif
 			<h3>Website Settings</h3>
             @if(count((array)$data) < 1)
-            
-            {{-- @if($data::has('sid')) --}}
 			<form method="post" action="{{url('add-settings')}}" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<input type="hidden" name="tbl" value="{{encrypt('settings')}}">
