@@ -3,7 +3,8 @@
 *{
 	margin:0 auto;
 	padding:0;
-	border:0;}
+	border:0;
+}
 body{
 	width: 100%;
 	overflow: hidden;
@@ -46,12 +47,13 @@ body{
 	background:#242424;
 	color:#f1f1f1;
 	margin-top:3px;
-	padding-left:40px;}
+}
 .search-btn{
 	position: absolute;
 	right: 10px;
 	top: 8px;
-	color: #fff;}		
+	color: #fff;
+}		
 .main-menu{
 	background:#242424;
 	padding:4px 0px;
@@ -123,7 +125,6 @@ h4{
 .top-social{
 	padding-top: 7px;
 }
-
 @media(max-width:420px){
 	
 	body{
@@ -175,4 +176,34 @@ h4{
 	Left: 0;
 
 	background: rgba(0,0,0,0.7);
+}
+.also-like h3{
+	color: #333;
+}
+a{
+	text-decoration: none !important;
+}
+#search-output{
+	position: absolute;
+	width: 100%;
+	height: auto;
+	padding: 10px;
+	box-sizing: border-box;
+	background: #fff;
+	top: 100%;
+	left: 0;
+	display: none;
+	z-index: 2;
+	border: 3px solid #249bc6;
+}
+.search-result{
+	list-style: none;
+}
+.search-result li a{
+	padding: 0 0 5px;
+	display: block;
+	color: #333;
+}
+.search-result li:last-child a{
+	padding-bottom: 0;
 }

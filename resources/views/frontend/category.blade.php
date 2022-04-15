@@ -1,242 +1,57 @@
 @extends('frontend.master')
+@section('title')
+<title>{{$cat->title}} | NEWS TIME | LARAVEL NEWS PORTAL PROTOTYPE</title>
+@stop
 @section('content')
-
 	<div class="wrapper">
 
 		<div class="row" style="margin-top:30px;">
 			<div class="col-md-8">
 				<div class="col-md-12" style="padding:15px 15px 30px 0px;">
 					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
+						<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742; texxt-transform: uppercase;">{{$cat->title}}</span></h3>
 					</div>
+					@if(count($posts) > 0)
 					<div class="col-md-12">
-						<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-						<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
+						@foreach($posts as $key=>$post)
+						@if($key == 0)
+						<a href="{{url('article')}}/{{$post->slug}}"><img src="{{url('public/posts')}}/{{$post->image}}" width="100%" style="margin-bottom:15px;" /></a>
+						{!!substr($post->description,0,300)!!}
+						<p><a href="{{url('article')}}/{{$post->slug}}">Read more &raquo;</a></p>
+						@endif
+						@endforeach
 					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-							<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-						</div>
-						<div class="col-md-6">
-							<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-							<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-						</div>
-						<div class="col-md-6">
-							<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-							<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-						</div>
-						<div class="col-md-6">
-							<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-							<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-						</div>
-					</div>            
+					@foreach($posts as $key=>$post)
+					@if($key > 0 && $key<10)
+					<div class="col-md-6">
+						<a href="{{url('article')}}/{{$post->slug}}"><img src="{{url('public/posts')}}/{{$post->image}}" width="100%" style="margin-bottom:15px;" /></a>
+						{!!substr($post->description,0,300)!!}
+						<p><a href="{{url('article')}}/{{$post->slug}}">Read more &raquo;</a></p>
+					</div>
+					@endif
+					@endforeach
+					@endif
 				</div>        
 			</div>
 
 <!-- right section -->
 			<div class="col-md-4">
 				<div class="col-md-12" style="padding:15px;">
-					<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
+					<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">LATEST NEWS</span></h3>
+					@foreach($latest->take(10) as $l)
 					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
 						<div class="col-md-4">
 							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
+								<a href="{{url('article')}}/{{$l->slug}}"><img src="{{url('public/posts')}}/{{$l->image}}" width="100%" style="margin-left:-15px;" /></a>
 							</div>
 						</div>
 						<div class="col-md-8">
 							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
+								<h4><a href="{{url('article')}}/{{$l->slug}}">{{$l->title}}</a></h4>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="padding-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:10px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12 text-center" style="padding:30px 0px;">
-						<img src="{{url('public/images/add.jpg')}}" width="80%" />
-					</div>    
-				</div>
-
-				<div class="col-md-12" style=" padding:15px 15px 60px 15px; margin-top:30px;">
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
-						<img src="{{url('public/images/coffee-563797_1280-390x205.jpg')}}" width="100%" style="margin-bottom:15px;" />
-						<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12" style=" padding:15px 15px 30px 15px; margin-top:30px;">
-					<div class="col-md-12">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
-					</div>          	
-					<div class="col-md-6">
-						<img src="{{url('public/images/add1.jpg')}}" width="100%" />
-					</div>
-					<div class="col-md-6">
-						<img src="{{url('public/images/add1.jpg')}}" width="100%" />
-					</div>
-				</div>
-
-				<div class="col-md-12" style=" padding:15px 15px 7px 15px; margin-top:30px;">
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
-						<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">MORE NEWS</span></h3>
-						<img src="{{url('public/images/bride-301814_1280-392x272.jpg')}}" width="100%" style="margin-bottom:15px;" />
-						<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12" style="padding-bottom:10px;">
-						<div class="col-md-4">
-							<div class="row">
-								<img src="{{url('public/images/relaxed-498245_1280-392x272.jpg')}}" width="100%" style="margin-left:-15px;" />
-							</div>
-						</div>
-						<div class="col-md-8">
-							<div class="row" style="padding-left:0px;">
-								<h4>Lorem ipsum dolor sit amet</h4>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div> 
 			</div>
 		</div> 

@@ -23,10 +23,12 @@ class frontController extends Controller
         else{
             $icons = [];
         }
+        $last_news = DB::table('posts')->where('status','publish')->orderBy('pid','DESC')->first();
         view()->share([
             'categories' => $categories,
             'setting' => $setting,
             'icons' => $icons,
+            'last_news' => $last_news,
         ]);
     }
     
@@ -45,10 +47,34 @@ class frontController extends Controller
         $general = DB::table('posts')->where('category_id','LIKE','%10%')->orderby('pid','DESC')->get();
         return view ('frontend.index',['featured'=>$featured,'general'=>$general,'business'=>$business,'sports'=>$sports,'technology'=>$technology,'health'=>$health,'travel'=>$travel,'entertainment'=>$entertainment,'politics'=>$politics,'style'=>$style]);
     }
-    public function category(){
-        return view ('frontend.category');
+    public function category($slug){
+        $cat = DB::table('categories')->where('slug',$slug)->first();
+        $posts = DB::table('posts')->where('category_id','LIKE','%'.$cat->cid.'%')->get();
+        $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view ('frontend.category', ['posts'=>$posts,'cat'=>$cat,'latest'=>$latest]);
     }
-    public function article(){
-        return view ('frontend.article');
+    public function article($slug){
+        $data = DB::table('posts')->where('slug',$slug)->first();
+        $category = explode(',',$data->category_id);
+        $category = $category[0];
+        $related = DB::table('posts')->where('category_id','LIKE','%'.$category.'%')->get();
+        $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view ('frontend.article',['data'=>$data,'related'=>$related,'latest'=>$latest]);
+    }
+    public function search_content(){
+        $url = 'article';
+        $text = $_GET['text'];
+        $data = DB::table('posts')->where('title','LIKE','%'.$text.'%')->orwhere('description','LIKE','%'.$text.'%')->get();
+        $output = '';
+        echo '<ul class="search-result">';
+        if (count($data) > 0){
+            foreach($data as $d){
+                echo '<li><a href="'.$url.'/'.$d->slug.'">'.$d->title.'</a></li>';
+            }
+        } else {
+            echo '<li><a>No data found.</a></li>';
+        }
+        echo '</ul>';
+        return $output;
     }
 }
