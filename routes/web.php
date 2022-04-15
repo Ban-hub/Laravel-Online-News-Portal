@@ -19,6 +19,9 @@ use App\Http\Controllers\crudController;
 Route::get('/', [frontController::class, 'index']);
 Route::get('article/{slug}',[frontController::class, 'article']);
 Route::get('category/{slug}', [frontController::class, 'category']);
+Route::get('page/{slug})', [frontController::class, 'page']);
+Route::get('contact-us', [frontController::class, 'contact_us']);
+Route::post('send-message',[crudController::class, 'insert_data']);
 
 Route::get('search-content', [frontController::class, 'search_content']);
 // admin
@@ -45,4 +48,6 @@ Route::post('make-page', [crudController::class, 'insert_data']);
 Route::get('all-pages', [adminController::class, 'all_pages']);
 Route::get('edit-page/{id}',  [adminController::class, 'edit_page']);
 Route::post('update-page/{id}', [crudController::class, 'update_data']);
+// messages
+Route::get('messages', [adminController::class, 'messages']);
 

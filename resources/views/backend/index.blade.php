@@ -37,7 +37,7 @@
 					</div>
 				</div>
 			</div>
-
+<!--
 			<div class="content">
 				<div class="col-sm-3">			
 					<img src="{{url('public/images/logo-big.png')}}" width="100%">
@@ -62,7 +62,7 @@
 						<a href="https://www.youtube.com/channel/UCcfzunR364Vv1NUWTKk78QA" target="_blank" class="btn btn-danger"><i class="fa fa-youtube"></i></a>
 					 </p>
 				</div>
-			</div>
+			</div>    !-->
 		</div>
 	</div>
 </div>

@@ -28,7 +28,11 @@ class crudController extends Controller
         }
 
         DB::table($tbl)->insert($data);
-        session::flash('message', 'Data Inserted Successfully');
+        if($tbl == 'messages'){
+            session::flash('message', 'Thank you for reaching out. We will get back to you shortly.');
+        }else{
+            session::flash('message', 'Data Inserted Successfully');
+        }
         return redirect()->back();
     }
     public function update_data(){

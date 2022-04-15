@@ -24,11 +24,13 @@ class frontController extends Controller
             $icons = [];
         }
         $last_news = DB::table('posts')->where('status','publish')->orderBy('pid','DESC')->first();
+        $pages = DB::table('pages')->where('status','publish')->get();
         view()->share([
             'categories' => $categories,
             'setting' => $setting,
             'icons' => $icons,
             'last_news' => $last_news,
+            'pages' => $pages,
         ]);
     }
     
@@ -63,6 +65,16 @@ class frontController extends Controller
         $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
         return view ('frontend.article',['data'=>$data,'related'=>$related,'latest'=>$latest]);
     }
+    public function page($slug){
+        $data = DB::table('pages')->where('slug',$slug)->first();
+        $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view ('frontend.page',['data'=>$data,'latest'=>$latest]);
+    }
+    public function contact_us(){
+        $latest = DB::table('posts')->where('status','publish')->orderby('pid','DESC')->get();
+        return view ('frontend.contact',['latest'=>$latest]);
+    }
+
     public function search_content(){
         $url = 'article';
         $text = $_GET['text'];

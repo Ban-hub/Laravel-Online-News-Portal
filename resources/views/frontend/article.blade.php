@@ -37,8 +37,8 @@
 								@endif
 							</h3>
 						</div>
+						<h1>{{$data->title}}</h1>
 						<img src="{{url('public/posts')}}/{{$data->image}}" width="100%" style="margin-bottom:15px;" />
-						<h3>{{$data->title}}</h3>
 						{!! $data->description !!}
 					</div>
 
