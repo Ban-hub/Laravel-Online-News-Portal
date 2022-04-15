@@ -17,7 +17,7 @@
     		<span class="day">{{date('l, M d, Y')}}</span> 
         </div>
         <div class="col-md-9">
-        	<span class="latest">Latest: </span> <a href="{{url('artice')}}/{{$last_news->slug}}">{{$last_news->title}}</a>
+        	<span class="latest">Latest: </span> <a href="{{url('article')}}/{{$last_news->slug}}">{{$last_news->title}}</a>
         </div>
     </div>
     <div class="col-md-3 top-social">

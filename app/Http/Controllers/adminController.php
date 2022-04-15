@@ -87,4 +87,20 @@ class adminController extends Controller
         $postCat = explode(',',$data->category_id);
         return view('backend.posts.edit',['data'=>$data, 'categories'=>$categories, 'postCat'=>$postCat]);
     }
+
+    public function add_page(){
+        return view('backend.pages.add-page');
+    }
+
+    public function all_pages(){
+        $posts = DB::table('pages')->get();
+        $published = DB::table('pages')->where('status','publish')->count();
+        $all_posts = DB::table('pages')->count();
+        return view('backend.pages.all-pages',['posts'=>$posts,'published'=>$published,'all_posts'=>$all_posts]);
+    }
+
+    public function edit_page($id){
+        $data = DB::table('pages')->where('page_id',$id)->first();
+        return view('backend.pages.edit',['data'=>$data]);
+    }
 }

@@ -39,4 +39,10 @@ Route::post('make-post', [crudController::class, 'insert_data']);
 Route::get('all-posts', [adminController::class, 'all_posts']);
 Route::get('edit-post/{id}',  [adminController::class, 'edit_post']);
 Route::post('update-post/{id}', [crudController::class, 'update_data']);
+// pages
+Route::get('add-page', [adminController::class, 'add_page']);
+Route::post('make-page', [crudController::class, 'insert_data']);
+Route::get('all-pages', [adminController::class, 'all_pages']);
+Route::get('edit-page/{id}',  [adminController::class, 'edit_page']);
+Route::post('update-page/{id}', [crudController::class, 'update_data']);
 

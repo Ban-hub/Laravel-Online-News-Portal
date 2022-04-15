@@ -3,15 +3,54 @@
 <title>{{$data->title}} | NEWS TIME | LARAVEL NEWS PORTAL PROTOTYPE</title>
 @stop
 @section('content')
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0" nonce="BDtlcxpA"></script>
+<script>window.twttr = (function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0],
+	  t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = "https://platform.twitter.com/widgets.js";
+	fjs.parentNode.insertBefore(js, fjs);
+  
+	t._e = [];
+	t.ready = function(f) {
+	  t._e.push(f);
+	};
+  
+	return t;
+  }(document, "script", "twitter-wjs"));</script>
 	<div class="wrapper">
-
 		<div class="row" style="margin-top:30px;">
 			<div class="col-md-8">
 				<div class="col-md-12" style="padding:15px 15px 30px 0px;">				
 					<div class="col-md-12">
+						<div class="text-right view-count">
+							<h3>
+								<i class="fa fa-eye"></i>
+								{{$data->views + 1}}
+								@if($data->views > 0)
+								Views
+								@else
+								View
+								@endif
+							</h3>
+						</div>
 						<img src="{{url('public/posts')}}/{{$data->image}}" width="100%" style="margin-bottom:15px;" />
 						<h3>{{$data->title}}</h3>
 						{!! $data->description !!}
+					</div>
+
+					<div class="col-sm-12 share-this">
+						<h3>Share...</h3>
+						<div class="fb-share-button" data-href="{{url('article')}}/{{$data->slug}}" data-layout="button" data-size="small"></div>
+						<span class="tweet-btn">
+							<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="small">Tweet</a>
+						</span>
+						<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+						<script type="IN/Share" data-url="{{url('article')}}/{{$data->slug}}"></script>
+			
 					</div>
 
 					<div class="col-md-12 also-like">

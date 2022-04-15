@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="{{url('public/css/ionicons.min.css')}}">
 	<link rel="stylesheet" href="{{url('public/css/menu.css')}}">
 	<link rel="stylesheet" href="{{url('public/css/adminstyle.css')}}">	
-    
     <script type="text/javascript" src="{{url('public/js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/app.min.js')}}"></script>
@@ -54,8 +53,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-eye"></i>All Pages</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Add Pages</a></li>
+              <li><a href="{{url('all-pages')}}"><i class="fa fa-eye"></i>All Pages</a></li>
+              <li><a href="{{url('add-page')}}"><i class="fa fa-plus-circle"></i>Add Pages</a></li>
             </ul>
         </li>
         <li class="treeview">
