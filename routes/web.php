@@ -17,9 +17,9 @@ use App\Http\Controllers\crudController;
 */
 
 Route::get('/', [frontController::class, 'index']);
+Route::get('article/{slug}',[frontController::class, 'article']);
 Route::get('category', [frontController::class, 'category']);
-Route::get('post', [frontController::class, 'post']);
-
+// admin
 Route::get('admin', [adminController::class, 'index']);
 // category
 Route::get('view-category', [adminController::class, 'view_category']);

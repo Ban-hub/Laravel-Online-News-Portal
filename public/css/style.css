@@ -94,12 +94,7 @@ h3{
 	color:#242424;}
 .caption{
 	color:#fff;
-	margin-top:-30px;
-	z-index:999;
-	position:absolute;
-	padding-left:20px;
-	font-size:16px;
-	font-weight:bold;}
+}
 .glyphicon-chevron-right{
 	font-size:11px;
 	font-weight:100;
@@ -109,8 +104,16 @@ h4{
 .fashion img{
 	margin-left:-15px;}
 .image-gallery img{
-	width:18.7%;
-	margin-right:10px;}	
+	width:100%;
+}	
+.flex{
+	display: flex;
+	flex-wrap: nowrap;
+	margin: 0 -5px;
+}
+.flex div{
+	padding: 0 5px;
+}
 .social-icon{
 	background: #2ca0c9;
 	padding: 5px 10px;
@@ -160,4 +163,16 @@ h4{
 		width:100%;
 		margin-right:0px;
 		margin-bottom:15px;}		
+}
+.relative{
+	position: relative;
+}
+.relative .caption{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+	Left: 0;
+
+	background: rgba(0,0,0,0.7);
 }

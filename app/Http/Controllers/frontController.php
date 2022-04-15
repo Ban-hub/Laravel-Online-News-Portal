@@ -33,13 +33,22 @@ class frontController extends Controller
         
     
     public function index(){
+        $politics = DB::table('posts')->where('category_id','LIKE','%1%')->orderby('pid','DESC')->get();
+        $business = DB::table('posts')->where('category_id','LIKE','%2%')->orderby('pid','DESC')->get();
+        $entertainment = DB::table('posts')->where('category_id','LIKE','%3%')->orderby('pid','DESC')->get();
+        $technology = DB::table('posts')->where('category_id','LIKE','%4%')->orderby('pid','DESC')->get();
+        $sports = DB::table('posts')->where('category_id','LIKE','%5%')->orderby('pid','DESC')->get();
+        $travel = DB::table('posts')->where('category_id','LIKE','%6%')->orderby('pid','DESC')->get();
+        $style = DB::table('posts')->where('category_id','LIKE','%7%')->orderby('pid','DESC')->get();
+        $health = DB::table('posts')->where('category_id','LIKE','%8%')->orderby('pid','DESC')->get();
         $featured = DB::table('posts')->where('category_id','LIKE','%9%')->orderby('pid','DESC')->get();
-        return view ('frontend.index',['featured'=>$featured]);
+        $general = DB::table('posts')->where('category_id','LIKE','%10%')->orderby('pid','DESC')->get();
+        return view ('frontend.index',['featured'=>$featured,'general'=>$general,'business'=>$business,'sports'=>$sports,'technology'=>$technology,'health'=>$health,'travel'=>$travel,'entertainment'=>$entertainment,'politics'=>$politics,'style'=>$style]);
     }
     public function category(){
         return view ('frontend.category');
     }
-    public function post(){
+    public function article(){
         return view ('frontend.article');
     }
 }

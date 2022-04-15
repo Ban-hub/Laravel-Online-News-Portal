@@ -65,7 +65,7 @@ class adminController extends Controller
     }
 
     public function all_posts(){
-        $posts = DB::table('posts')->paginate(8);
+        $posts = DB::table('posts')->orderby('pid','DESC')->paginate(8);
         foreach($posts as $post){
             $categories = explode(',', $post->category_id);
             foreach ($categories as $cat){
