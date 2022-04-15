@@ -13,6 +13,8 @@
 				{{Session('message')}}
 			</div>
 			@endif
+		</div>
+		
 		<div class="col-sm-12">
 			<div class="row">
 				<form method="post" action="{{url('make-post')}}" enctype="multipart/form-data">

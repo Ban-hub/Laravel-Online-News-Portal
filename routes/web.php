@@ -50,4 +50,10 @@ Route::get('edit-page/{id}',  [adminController::class, 'edit_page']);
 Route::post('update-page/{id}', [crudController::class, 'update_data']);
 // messages
 Route::get('messages', [adminController::class, 'messages']);
+// advertisements
+Route::get('add-adv', [adminController::class, 'add_adv']);
+Route::post('make-adv', [crudController::class, 'insert_data']);
+Route::get('all-advs', [adminController::class, 'all_advs']);
+Route::get('edit-adv/{id}',  [adminController::class, 'edit_adv']);
+Route::post('update-adv/{id}', [crudController::class, 'update_data']);
 
