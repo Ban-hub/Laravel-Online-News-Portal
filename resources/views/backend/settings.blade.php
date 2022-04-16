@@ -102,7 +102,7 @@
                     </div>
                 </div>
 				<div class="form-group">
-					<button class="btn btn-primary">Add Settings</button>
+					<button class="btn btn-primary">Update Settings</button>
 				</div>
 			</form>	
             <script>
