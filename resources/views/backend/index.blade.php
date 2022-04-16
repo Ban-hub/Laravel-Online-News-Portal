@@ -23,7 +23,7 @@
 						<br><br>
 						<p>This project was built for the course:</p>
 						<p>CSE470: Software Engineering</p>
-						<a href="https://www.bracu.ac.bd" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-lg btn-primary">Github Link</button></a>
+						<a href="https://github.com/Ban-hub/CSE470-sp22-s8-online-news-portal" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-lg btn-primary">Github Link</button></a>
 					</div>
 					<div class="col-sm-4 quick-links">
 						<h4>View Records</h4>
