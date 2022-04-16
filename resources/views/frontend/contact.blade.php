@@ -68,6 +68,13 @@
 					</div>
 					@endforeach
 				</div> 
+                
+				@if($sidebarTop)
+				<div class="col-sm-12 sidebar-adv"><a href="{{$sidebarTop->url}}"><img src="{{url('public/advertisements')}}/{{$sidebarTop->image}}" width="100%" alt="{{$sidebarTop->title}}"/></a></div>
+				@endif
+				@if($sidebarBottom)
+				<div class="col-sm-12 sidebar-adv"><a href="{{$sidebarBottom->url}}"><img src="{{url('public/advertisements')}}/{{$sidebarBottom->image}}" width="100%" alt="{{$sidebarBottom->title}}"/></a></div>
+				@endif
 			</div>
 		</div> 
 	</div>

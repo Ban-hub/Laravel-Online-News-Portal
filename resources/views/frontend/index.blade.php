@@ -83,16 +83,16 @@
             </div>
         </div>
         
-	        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
-    	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">BUSINESS</span></h3>
-        	    <div class="flex">
-					@foreach($business->take(5) as $b)
-					<div>
-						<a href="{{url('article')}}/{{$b->slug}}"><img src="{{url('public/posts')}}/{{$b->image}}" /></a>
-					</div>
-					@endforeach
+		<div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
+			<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">BUSINESS</span></h3>
+			<div class="flex">
+				@foreach($business->take(5) as $b)
+				<div>
+					<a href="{{url('article')}}/{{$b->slug}}"><img src="{{url('public/posts')}}/{{$b->image}}" /></a>
 				</div>
-	        </div>
+				@endforeach
+			</div>
+		</div>
         
         <div class="row">
         	<div class="col-md-6">
@@ -190,14 +190,16 @@
         </div>
 		</div>
         
-        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
-			<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TRAVEL</span></h3>
-			<div class="flex">
-				@foreach($travel->take(5) as $b)
-				<div>
-					<a href="{{url('article')}}/{{$b->slug}}"><img src="{{url('public/posts')}}/{{$b->image}}" /></a>
+        <div class="col-md-12">
+			<div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
+				<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">TRAVEL</span></h3>
+				<div class="flex">
+					@foreach($travel->take(5) as $b)
+					<div>
+						<a href="{{url('article')}}/{{$b->slug}}"><img src="{{url('public/posts')}}/{{$b->image}}" /></a>
+					</div>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
 		</div>
         
@@ -256,9 +258,13 @@
                 </div>
             </div>
 			@endforeach
-          </div>
-          
-          <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 60px 15px; margin-top:30px;">
+        </div>
+
+        @if($sidebarTop)
+			<div class="col-sm-12 sidebar-adv"><a href="{{$sidebarTop->url}}"><img src="{{url('public/advertisements')}}/{{$sidebarTop->image}}" width="100%" alt="{{$sidebarTop->title}}"/></a></div>
+		@endif
+
+        <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 60px 15px; margin-top:30px;">
           	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:0px 10px 20px 10px; margin-bottom:10px;">
            		<h3 style="border-bottom:3px solid #2b99ca; padding-bottom:5px;"><span style="padding:6px 12px; background:#2b99ca;">STYLE</span></h3>
 				    @foreach($style as $key=>$s)
@@ -287,10 +293,13 @@
 				@endif
 				@endforeach
                 
-          </div>
+          	</div>
           
-		  
-          </div> 
+			@if($sidebarBottom)
+			<div class="col-sm-12 sidebar-adv"><a href="{{$sidebarBottom->url}}"><img src="{{url('public/advertisements')}}/{{$sidebarBottom->image}}" width="100%" alt="{{$sidebarBottom->title}}"/></a></div>
+			@endif
+			
+		</div> 
           
         </div>
     </div> 

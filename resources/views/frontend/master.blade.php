@@ -34,7 +34,9 @@
 		@endif
     </div>
     <div class="col-md-8">
-    	<img src="{{url('public/images/final-news-site_06.gif')}}" width="100%" />
+		@if($leaderboard)
+    	<a href="{{$leaderboard->url}}"><img src="{{url('public/advertisements')}}/{{$leaderboard->image}}" width="100%" alt="{{$leaderboard->title}}"/></a>
+		@endif
     </div>
 </div>
 

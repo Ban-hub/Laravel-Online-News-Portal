@@ -3,7 +3,7 @@ body{ background: #f1f1f1; }
 .sidebar-menu li a:hover{ background: #191e23; }
 .dashboard{ background: #0073aa; }
 .dashboard:after{ right: 0; border: 8px solid transparent; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-right-color: #f1f1f1; top: 50%; margin-top: -8px; }
-.sidebar{ position: fixed; width: 160px; background: #23282d; height: 100%; }
+.sidebar{ position: fixed; width: 360px; background: #23282d; height: 100%; }
 .sidebar-menu li a.dashboard:hover{ background: #0073aa; }
 .container-fluid{ padding-left: 180px; margin-bottom: 50px; }
 .content{ background: #fff; padding: 15px; margin-top: 20px;  }

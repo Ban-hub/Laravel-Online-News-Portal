@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\crudController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +26,7 @@ Route::post('send-message',[crudController::class, 'insert_data']);
 
 Route::get('search-content', [frontController::class, 'search_content']);
 // admin
-Route::get('admin', [adminController::class, 'index']);
+Route::get('news-admin', [adminController::class, 'index']);
 // category
 Route::get('view-category', [adminController::class, 'view_category']);
 Route::post('add-category', [crudController::class, 'insert_data']);
@@ -57,3 +58,8 @@ Route::get('all-advs', [adminController::class, 'all_advs']);
 Route::get('edit-adv/{id}',  [adminController::class, 'edit_adv']);
 Route::post('update-adv/{id}', [crudController::class, 'update_data']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logout', [App\Http\Controllers\HomeController::class, 'logout']);

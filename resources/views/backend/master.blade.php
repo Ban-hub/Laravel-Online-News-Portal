@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>ADMIN DASHBOARD | NEWS TIME</title>
 	<link rel="stylesheet" href="{{url('public/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{url('public/css/font-awesome.min.css')}}">
@@ -17,7 +18,7 @@
 
 <div class="sidebar">
 	<ul class="sidebar-menu">
-		<li><a href="{{url('admin')}}" class="dashboard"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+		<li><a href="{{url('news-admin')}}" class="dashboard"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 		<li class="treeview">
             <a href="#">
               <i class="fa fa-bookmark-o"></i> <span>Posts</span>
@@ -73,26 +74,14 @@
         </li>
         <li class="treeview">
             <a href="#">
-              <i class="fa fa-user-plus"></i> <span>Users</span>
+              <i class="fa fa-address-book"></i> <span>{{Auth::user()->name}}</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-eye"></i>All Users</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Add Users</a></li>
-            </ul>
-        </li>
-        <li class="treeview">
-            <a href="#">
-              <i class="fa fa-address-book"></i> <span>Active User</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-edit"></i>Edit Profile</a></li>
-              <li><a href="login.html"><i class="fa fa-power-off"></i>Log Out</a></li>
+            <ul class="treeview-menu"><li>
+              <a href="{{url('register')}}"><i class="fa fa-user"></i>Add New User</a></li>
+              <li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Log Out</a></li>
             </ul>
         </li>		
 	</ul>
