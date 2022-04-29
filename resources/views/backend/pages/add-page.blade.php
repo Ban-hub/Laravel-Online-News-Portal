@@ -39,9 +39,6 @@
 							<div class="form-group">
 								<button class="btn btn-default" name="status" value="draft">Save Draft</button>
 							</div>
-							<p>Status: Draft <a href="#">Edit</a></p>
-							<p>Visibility: Public <a href="#">Edit</a></p>
-							<p>Publish: Immediately <a href="#">Edit</a></p>
 							<div class="row">
 								<div class="col-sm-12 main-button">
 									<button class="btn btn-primary pull-right" name="status" value="publish">Publish</button>

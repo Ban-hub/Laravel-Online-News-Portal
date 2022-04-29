@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [frontController::class, 'index']);
 Route::get('article/{slug}',[frontController::class, 'article']);
 Route::get('category/{slug}', [frontController::class, 'category']);
-Route::get('page/{slug})', [frontController::class, 'page']);
+Route::get('page/{slug}', [frontController::class, 'page']);
 Route::get('contact-us', [frontController::class, 'contact_us']);
 Route::post('send-message',[crudController::class, 'insert_data']);
 
