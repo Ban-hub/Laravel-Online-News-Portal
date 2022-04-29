@@ -33,7 +33,7 @@
 						<p><a href="{{url('all-messages')}}"><i class="fa fa-envelope"></i> View All Messages</a></p>
 					</div>
 					<div class="col-sm-4 quick-links">
-						<h4>Add Records</h4>
+						<h4>Add New</h4>
 						<p><a href="{{url('add-post')}}"><i class="fa fa-bookmark-o"></i> Add Posts</a></p>
 						<p><a href="{{url('add-adv')}}"><i class="fa fa-image"></i> Add Advertisement</a></p>
 						<p><a href="{{url('add-page')}}"><i class="fa fa-file"></i> Add Pages</a></p>
