@@ -82,7 +82,7 @@ class frontController extends Controller
     }
 
     public function search_content(){
-        $url = 'article';
+        $url = '/online-news-portal/article';
         $text = $_GET['text'];
         $data = DB::table('posts')->where('title','LIKE','%'.$text.'%')->orwhere('description','LIKE','%'.$text.'%')->get();
         $output = '';
