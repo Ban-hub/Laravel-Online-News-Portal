@@ -100,11 +100,11 @@
             	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:20px 10px; margin-bottom:10px;">
                 <h3 style="border-bottom:3px solid #b952c8; padding-bottom:5px;"><span style="padding:6px 12px; background:#b952c8;">SPORTS</span></h3>
 				@foreach($sports as $key=>$s)
-				@if($key == 0)
-            	<a href="{{url('article')}}/{{$s->slug}}"><img src="{{url('public/posts')}}/{{$s->image}}" width="100%" style="margin-bottom:15px;" /></a>
-				<h3><a href="{{url('article')}}/{{$s->slug}}">{{$s->title}}</a></h3>
-        		<p align="justify">{!!substr($s->description,0,300)!!}</p><a href="{{url('article')}}/{{$g->slug}}">Read more &raquo;</a>
-				@endif
+					@if($key == 0)
+						<a href="{{url('article')}}/{{$s->slug}}"><img src="{{url('public/posts')}}/{{$s->image}}" width="100%" style="margin-bottom:15px;" /></a>
+						<h3><a href="{{url('article')}}/{{$s->slug}}">{{$s->title}}</a></h3>
+						<p align="justify">{!!substr($s->description,0,300)!!}</p><a href="{{url('article')}}/{{$g->slug}}">Read more &raquo;</a>
+					@endif
 				@endforeach
             	</div>
 				@foreach($sports as $key=>$s)
