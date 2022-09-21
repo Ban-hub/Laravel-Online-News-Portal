@@ -1,5 +1,5 @@
 ***
-<p align="center"><a href="https://www.bracu.ac.bd" target="_blank"><img src="https://www.bracu.ac.bd/sites/all/themes/sloth/logo.svg" width="120"></a></p>
+<p align="center"><a href="https://www.bracu.ac.bd" target="_blank"><img style="background-color: #FFFFFF;" src="https://www.bracu.ac.bd/sites/all/themes/sloth/logo.svg" width="120"></a></p>
 
 This project was developed as part of the Course `CSE470: Software Engineering` in BRAC Univesity.
 The Model, View, and Controller Specific codes have been copied to the `MVC Structure` Folder, following university submission guidelines.
